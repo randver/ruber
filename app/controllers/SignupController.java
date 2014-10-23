@@ -4,13 +4,12 @@ package controllers;
 import is.ru.honn.ruber.domain.UserRegistration;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
-import play.mvc.*;
-import play.data.*;
-
+import play.data.Form;
+import play.mvc.Result;
 import views.html.signup;
 import views.html.summary;
 
-import static play.data.Form.*;
+import static play.data.Form.form;
 
 
 public class SignupController extends UserController
@@ -72,5 +71,7 @@ public class SignupController extends UserController
                          created.getRegistered());
       return ok(summary.render(created));
     }
+
   }
+
 }

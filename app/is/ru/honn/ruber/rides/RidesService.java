@@ -7,4 +7,5 @@ public interface RidesService
 {
   public void addTrip(int userId, Trip trip);
   public List<Trip> getTrip(int userId);
+
 }

@@ -9,11 +9,21 @@ import java.util.List;
 public class RidesServiceStub implements RidesService
 {
   List<Trip> theTrips = new ArrayList<Trip>();
+  private RidesDataGateway ridesDataGateway;
 
+    /*
+  public RidesServiceStub(RidesDataGateway ridesDataGateway)
+  {
+    this.ridesDataGateway = ridesDataGateway;
+  }
+*/
   @Override
   public void addTrip(int userId, Trip trip)
   {
     theTrips.add(trip);
+    int id = ridesDataGateway.addTrip(trip);
+    trip.setId(id);
+
   }
 
   @Override
@@ -21,5 +31,6 @@ public class RidesServiceStub implements RidesService
   {
     return theTrips;
   }
+
 }
 

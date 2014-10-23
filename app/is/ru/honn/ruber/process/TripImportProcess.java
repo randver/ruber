@@ -19,8 +19,9 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void beforeProcess()
   {
-    ApplicationContext appCtx = new FileSystemXmlApplicationContext("ApplicationContext.xml");
+    ApplicationContext appCtx = new FileSystemXmlApplicationContext("\\conf\\ApplicationContext.xml");
     ridesService = (RidesService)appCtx.getBean("RidesService");
+    reader = (TripReader)appCtx.getBean("TripReader");
     reader.setHandler(this);
   }
 
