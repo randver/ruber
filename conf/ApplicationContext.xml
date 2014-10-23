@@ -3,6 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="RidesService" class="is.ru.honn.ruber.rides.RidesServiceStub">
+    </bean>
+
+    <bean id="TripReader" class="is.ru.honn.ruber.process.TripReader">
+    </bean>
+
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
