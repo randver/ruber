@@ -12,4 +12,5 @@ public interface UserService
 
   public User getUser(String username) throws UserNotFoundException;
 
+  public Object getHistory(int uuid);
 }

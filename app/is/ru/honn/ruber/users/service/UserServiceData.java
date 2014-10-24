@@ -1,8 +1,8 @@
 package is.ru.honn.ruber.users.service;
 
 
-import is.ru.honn.ruber.users.data.UserDataGateway;
 import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.users.data.UserDataGateway;
 
 import java.util.Date;
 import java.util.logging.Logger;
@@ -38,6 +38,11 @@ public class UserServiceData implements UserService
     }
     return user;
   }
+    @Override
+    public Object getHistory(int uuid)
+    {
+        return userDataGateway.getHistory(uuid);
+    }
 
 
 

@@ -7,5 +7,7 @@ public interface UserDataGateway extends RuDataAccess
 {
     public int addUser(User user);
     public User getUserByUsername(String username);
+    public Object getHistory(int uuid);
+
 
 }
