@@ -25,7 +25,7 @@ public class DriverController extends Controller
         DriverService service = (DriverService) ctx.getBean("driverService");
 
 
-        Object result = new Object();
+        Object result;
         result = service.getList();
 
         return ok(toJson(result));
@@ -34,7 +34,7 @@ public class DriverController extends Controller
     public static Result getDriverInfo(String username)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
-        Object result = new Object();
+        Object result;
         result = service.getDriverDetails(username);
 
         return ok(toJson(result));

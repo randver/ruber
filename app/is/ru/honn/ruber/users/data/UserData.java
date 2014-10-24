@@ -70,7 +70,7 @@ public class UserData extends RuData implements UserDataGateway
 
         try
         {
-            obj = jdbcTemplate.queryForList(
+            return jdbcTemplate.queryForList(
                     "select * from ru_trips where uuid = '" + uuid + "'");
         }
         catch (EmptyResultDataAccessException erdaex)
@@ -79,7 +79,7 @@ public class UserData extends RuData implements UserDataGateway
         }
 
 
-        return obj;
+        //return obj;
 
     }
 
