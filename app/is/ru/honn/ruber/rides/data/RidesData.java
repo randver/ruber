@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.rides;
+package is.ru.honn.ruber.rides.data;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
@@ -45,16 +45,6 @@ public class RidesData extends RuData implements RidesDataGateway {
 
         trip.setId(returnKey);
         return returnKey;
-    }
-
-    @Override
-    public void setDataSource(DataSource dataSource) {
-
-    }
-
-    @Override
-    public DataSource getDataSource() {
-        return null;
     }
 
 }

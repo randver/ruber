@@ -2,6 +2,7 @@ package controllers;
 
 
 import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.driver.service.DriverService;
 import is.ru.honn.ruber.users.data.UserDataGateway;
 import is.ru.honn.ruber.users.service.UserService;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +22,7 @@ public class DriverController extends Controller
     protected static ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/DriverService.xml");
     public static Result getDrivers()
     {
-        UserService service = (UserService) ctx.getBean("userService");
+        DriverService service = (DriverService) ctx.getBean("driverService");
 
 
         Object result = new Object();
@@ -32,7 +33,7 @@ public class DriverController extends Controller
 
     public static Result getDriverInfo(String username)
     {
-        UserService service = (UserService) ctx.getBean("userService");
+        DriverService service = (DriverService) ctx.getBean("driverService");
         Object result = new Object();
         result = service.getDriverDetails(username);
 
@@ -41,7 +42,7 @@ public class DriverController extends Controller
 
     public static Result getComments(int driverId)
     {
-        UserService service = (UserService) ctx.getBean("userService");
+        DriverService service = (DriverService) ctx.getBean("driverService");
         Object result = new Object();
         result = service.getComments(driverId);
 

@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.rides;
+package is.ru.honn.ruber.rides.data;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ruframework.data.RuDataAccess;

@@ -1,7 +1,7 @@
 package is.ru.honn.ruber.process;
 
 import is.ru.honn.ruber.domain.Trip;
-import is.ru.honn.ruber.rides.RidesService;
+import is.ru.honn.ruber.rides.service.RidesService;
 import is.ruframework.process.RuAbstractProcess;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -19,7 +19,7 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void beforeProcess()
   {
-    ApplicationContext appCtx = new FileSystemXmlApplicationContext("ApplicationContext.xml");
+    ApplicationContext appCtx = new FileSystemXmlApplicationContext("conf/ApplicationContext.xml");
     ridesService = (RidesService)appCtx.getBean("RidesService");
     reader = (TripReader)appCtx.getBean("TripReader");
     reader.setHandler(this);
