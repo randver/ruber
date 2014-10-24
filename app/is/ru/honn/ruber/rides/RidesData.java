@@ -2,6 +2,7 @@ package is.ru.honn.ruber.rides;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
+import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Randi on 23.10.2014.
  */
-public class RidesData implements RidesDataGateway {
+public class RidesData extends RuData implements RidesDataGateway {
 
     @Override
     public int addTrip(Trip trip)

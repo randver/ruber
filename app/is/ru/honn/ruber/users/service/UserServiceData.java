@@ -38,5 +38,17 @@ public class UserServiceData implements UserService
     }
     return user;
   }
+    public Object getList()
+    {
+        return userDataGateway.getDriverList();
+    }
+
+    public Object getDriverDetails(String user)
+    {
+        return userDataGateway.getDriver(user);
+    }
+
+    public Object getComments(int driverId){ return userDataGateway.getComments(driverId);}
+
 
 }
