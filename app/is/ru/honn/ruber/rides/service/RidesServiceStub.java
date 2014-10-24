@@ -13,9 +13,7 @@ public class RidesServiceStub implements RidesService
   List<Trip> theTrips = new ArrayList<Trip>();
   private RidesDataGateway ridesDataGateway;
 
-    public RidesServiceStub(){
 
-    }
   public RidesServiceStub(RidesDataGateway ridesDataGateway)
   {
     this.ridesDataGateway = ridesDataGateway;
@@ -24,8 +22,8 @@ public class RidesServiceStub implements RidesService
   @Override
   public void addTrip(int userId, Trip trip)
   {
-        //theTrips.add(trip);
-        ridesDataGateway.addTrip(trip);
+
+        ridesDataGateway.addTrip(trip, userId);
   }
 
   @Override

@@ -16,19 +16,20 @@ import java.util.Map;
 public class RidesData extends RuData implements RidesDataGateway {
 
     @Override
-    public int addTrip(Trip trip)
+    public int addTrip(Trip trip, int userId)
     {
         SimpleJdbcInsert insert =
                 new SimpleJdbcInsert(getDataSource())
                         .withTableName("ru_trips")
                         .usingGeneratedKeyColumns("id");
 
-        Map<String, Object> parameters = new HashMap<String, Object>(6);
+        Map<String, Object> parameters = new HashMap<String, Object>(7);
         parameters.put("distance", trip.getDistance());
         parameters.put("end_time", trip.getEndTime());
         parameters.put("product_id", trip.getProductId());
         parameters.put("request_time", trip.getRequestTime());
         parameters.put("start_time", trip.getStartTime());
+        parameters.put("uuid", userId);
         parameters.put("status", trip.getStatus().toString());
 
 
