@@ -3,6 +3,7 @@ package controllers;
 
 import is.ru.honn.ruber.domain.DriverDTO;
 import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.domain.informationDTO;
 import is.ru.honn.ruber.driver.service.DriverService;
 import is.ru.honn.ruber.users.data.UserDataGateway;
 import is.ru.honn.ruber.users.service.UserService;
@@ -14,6 +15,8 @@ import play.mvc.Controller;
 import play.data.Form;
 import play.mvc.Result;
 import views.html.driverlist;
+import views.html.driverdetails;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +31,19 @@ public class DriverController extends Controller
         DriverService service = (DriverService) ctx.getBean("driverService");
 
 
-        List<DriverDTO> result;
-        result = service.getList();
+        List<informationDTO> drivers;
+        drivers = service.getList();
 
-        return ok(driverlist.render((scala.collection.immutable.List<DriverDTO>) result));
+        return ok(driverlist.render(drivers));
     }
 
-    public static Result getDriverInfo(String username)
+    public static Result getDriverDetails(String username)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
-        Object result;
-        result = service.getDriverDetails(username);
+        List<informationDTO> details;
+        details = service.getDriverDetails(username);
 
-        return ok(toJson(result));
+        return ok(driverdetails.render(details));
     }
 
     public static Result getComments(int driverId)

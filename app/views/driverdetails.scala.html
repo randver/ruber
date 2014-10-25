@@ -1,0 +1,10 @@
+@(driverdetails: List[is.ru.honn.ruber.domain.informationDTO])
+
+
+<table>
+@for(driverdetail <- driverdetails) {
+    <tr>
+        <td>@driverdetail.getComments</td>
+    </tr>
+</table>
+}

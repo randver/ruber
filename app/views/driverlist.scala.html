@@ -1,11 +1,12 @@
-@(drivers: List[is.ru.honn.ruber.domain.DriverDTO])
+@(drivers: List[is.ru.honn.ruber.domain.informationDTO])
 
 <h1>List of all drivers</h1>
 
 <table>
     @for(driver <- drivers) {
         <tr>
-            <td>@driver.getUsername</td>
+            <td><a href="@routes.DriverController.getDriverDetails(driver.getUsername)">@driver.getUsername</a></td>
+
             <td>@driver.getCar</td>
         </tr>
     }

@@ -11,7 +11,7 @@
         <h3>Good to see you again @{session.get("displayName")}!</h3>
         <a href="@routes.DriverController.getDrivers()">Get Driver</a>
         <a href="@routes.UserController.getHistory()">Get Trips for Driver</a>
-        <a href="@routes.DriverController.getDriverInfo("travis")">Get Driverinfo</a>
+        <a href="@routes.DriverController.getDriverDetails("travis")">Get Driverinfo</a>
 
     } else {
 
@@ -21,7 +21,7 @@
             <a class="btn" href="@routes.LoginController.blank()">Login</a>
             <a href="@routes.DriverController.getDrivers()">Get Driver</a>
             <a href="@routes.UserController.getHistory()">Get Trips for Driver</a>
-            <a href="@routes.DriverController.getDriverInfo("travis")">Get Driverinfo</a>
+
         </p>
     }
 }

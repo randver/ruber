@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.driver.service;
 
 import is.ru.honn.ruber.domain.DriverDTO;
+import is.ru.honn.ruber.domain.informationDTO;
 import is.ru.honn.ruber.driver.data.DriverDataGateWay;
 
 import java.util.List;
@@ -18,14 +19,14 @@ public class DriverServiceData implements DriverService {
 
 
 
-    public List<DriverDTO> getList()
+    public List<informationDTO> getList()
     {
         return driverDataGateWay.getDriverList();
     }
 
-    public Object getDriverDetails(String user)
+    public List<informationDTO> getDriverDetails(String user)
     {
-        return driverDataGateWay.getDriver(user);
+        return driverDataGateWay.getDriverDetails(user);
     }
 
     public Object getComments(int driverId){ return driverDataGateWay.getComments(driverId);}
