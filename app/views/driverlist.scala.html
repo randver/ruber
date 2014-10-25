@@ -1,0 +1,12 @@
+@(drivers: List[is.ru.honn.ruber.domain.DriverDTO])
+
+<h1>List of all drivers</h1>
+
+<table>
+    @for(driver <- drivers) {
+        <tr>
+            <td>@driver.getUsername</td>
+            <td>@driver.getCar</td>
+        </tr>
+    }
+</table>

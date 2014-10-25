@@ -1,6 +1,7 @@
 package controllers;
 
 
+import is.ru.honn.ruber.domain.DriverDTO;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.driver.service.DriverService;
 import is.ru.honn.ruber.users.data.UserDataGateway;
@@ -12,8 +13,10 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import play.mvc.Controller;
 import play.data.Form;
 import play.mvc.Result;
+import views.html.driverlist;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static play.libs.Json.toJson;
 
@@ -25,10 +28,10 @@ public class DriverController extends Controller
         DriverService service = (DriverService) ctx.getBean("driverService");
 
 
-        Object result;
+        List<DriverDTO> result;
         result = service.getList();
 
-        return ok(toJson(result));
+        return ok(driverlist.render((scala.collection.immutable.List<DriverDTO>) result));
     }
 
     public static Result getDriverInfo(String username)
