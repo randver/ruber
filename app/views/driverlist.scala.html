@@ -6,8 +6,8 @@
     @for(driver <- drivers) {
         <tr>
             <td><a href="@routes.DriverController.getDriverDetails(driver.getUsername)">@driver.getUsername</a></td>
-
             <td>@driver.getCar</td>
+            @* TODO birta partial viewið driverdetails undir hverjum driver *@
         </tr>
     }
 </table>
