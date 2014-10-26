@@ -1,10 +1,12 @@
 package is.ru.honn.ruber.users.service;
 
 
+import is.ru.honn.ruber.domain.TripDTO;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.users.data.UserDataGateway;
 
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class UserServiceData implements UserService
@@ -39,7 +41,7 @@ public class UserServiceData implements UserService
     return user;
   }
     @Override
-    public Object getHistory(int uuid)
+    public List<TripDTO> getHistory(int uuid)
     {
         return userDataGateway.getHistory(uuid);
     }

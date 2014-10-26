@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.users.data;
 
 import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.TripDTO;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
@@ -62,16 +63,31 @@ public class UserData extends RuData implements UserDataGateway
     return user;
   }
 
-    public Object getHistory(int uuid)
+    public List<TripDTO> getHistory(int uuid)
     {
 
-        Object obj = new Object();
+        List<TripDTO> list = new ArrayList<>();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        List<Map<String, Object>> obj = new ArrayList<>();
 
         try
         {
-            return jdbcTemplate.queryForList(
-                    "select * from ru_trips where uuid = '" + uuid + "'");
+            obj = jdbcTemplate.queryForList(
+                    "select u.username, t.distance, t.start_time, t.end_time \n" +
+                            "from ru_trips t \n" +
+                            "inner join ru_users u on u.id = " + uuid + " \n"+
+                            "where uuid = '" + uuid + "'");
+
+            for (int i = 0; i < obj.size(); i++) {
+                HashMap<String, Object> map = (HashMap) obj.get(i);
+                TripDTO tdto = new TripDTO();
+
+                tdto.setUsername((String) map.get("username"));
+                tdto.setDistance((Double) map.get("distance"));
+                //tdto.setCar((String) map.get("display_name"));
+                tdto.setDuration((Long)map.get("start_time"), (Long)map.get("end_time"));
+                list.add(tdto);
+            }
         }
         catch (EmptyResultDataAccessException erdaex)
         {
@@ -79,7 +95,7 @@ public class UserData extends RuData implements UserDataGateway
         }
 
 
-        //return obj;
+        return list;
 
     }
 
