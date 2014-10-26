@@ -1,9 +1,22 @@
 @(driverdetails: List[is.ru.honn.ruber.domain.informationDTO])
 
 
-<table>
+<table border="1" style="width:100%">
 @for(driverdetail <- driverdetails) {
     <tr>
+        <th>Username:</th>
+        <td>@driverdetail.getUsername</td>
+    </tr>
+    <tr>
+        <th>Firstname:</th>
+        <td>@driverdetail.getFirstName</td>
+    </tr>
+    <tr>
+        <th>Lastname:</th>
+        <td>@driverdetail.getLastName</td>
+    </tr>
+    <tr>
+        <th>Comments</th>
         <td>@driverdetail.getComments</td>
     </tr>
 </table>

@@ -2,11 +2,14 @@
 
 <h1>List of all drivers</h1>
 
-<table>
+<table border="1" style="width:100%">
     @for(driver <- drivers) {
+        <tr> Name </tr>
+        <tr> Car </tr>
         <tr>
             <td><a href="@routes.DriverController.getDriverDetails(driver.getUsername)">@driver.getUsername</a></td>
             <td>@driver.getCar</td>
+
             @* TODO birta partial viewið driverdetails undir hverjum driver *@
         </tr>
     }
