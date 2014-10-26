@@ -24,14 +24,18 @@ public class DriverData extends RuData implements DriverDataGateWay {
         List<Map<String, Object>> obj;
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-        obj = jdbcTemplate.queryForList("select ru_users.username, ru_drivers.car from ru_users inner join ru_drivers on ru_users.id = ru_drivers.user_id");
+        obj = jdbcTemplate.queryForList("select u.username, p.display_name \n" +
+                "from ru_users u \n" +
+                "inner join ru_drivers d \n" +
+                "on u.id = d.user_id \n" +
+                "inner join ru_products p on p.id = d.product_id");
 
         for (int i = 0; i < obj.size(); i++) {
             HashMap<String, Object> map = (HashMap) obj.get(i);
             informationDTO dto = new informationDTO();
 
             dto.setUsername((String) map.get("username"));
-            dto.setCar((String) map.get("car"));
+            dto.setCar((String) map.get("display_name"));
             list.add(dto);
 
         }
@@ -43,9 +47,10 @@ public class DriverData extends RuData implements DriverDataGateWay {
         List<informationDTO> list = new ArrayList<>();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<Map<String, Object>> obj = new ArrayList<>();
-        obj = jdbcTemplate.queryForList("select u.id, u.username, u.firstname, u.lastname, u.email, d.car \n" +
+        obj = jdbcTemplate.queryForList("select u.id, u.username, u.firstname, u.lastname, u.email, p.display_name \n" +
                 "from ru_users u \n" +
                 "inner join ru_drivers d on u.id = d.user_id \n" +
+                "inner join ru_products p on d.id = p.id\n" +
                 "where u.username = '" + user + "'");
 
         for (int i = 0; i < obj.size(); i++) {
@@ -58,7 +63,7 @@ public class DriverData extends RuData implements DriverDataGateWay {
                 idto.addComment((String) map2.get("comment"));
             }
             idto.setUsername((String) map.get("username"));
-            idto.setCar((String) map.get("car"));
+            idto.setCar((String) map.get("display_name"));
             idto.setFirstName((String) map.get("firstname"));
             idto.setLastName((String) map.get("lastname"));
             idto.setEmail((String) map.get("email"));
