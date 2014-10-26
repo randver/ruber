@@ -86,6 +86,7 @@ public class UserData extends RuData implements UserDataGateway
                 tdto.setDistance((Double) map.get("distance"));
                 //tdto.setCar((String) map.get("display_name"));
                 tdto.setDuration((Long)map.get("start_time"), (Long)map.get("end_time"));
+                tdto.setDate((Long) map.get("start_time"));
                 list.add(tdto);
             }
         }

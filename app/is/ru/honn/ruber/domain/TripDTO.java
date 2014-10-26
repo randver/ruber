@@ -1,20 +1,27 @@
 package is.ru.honn.ruber.domain;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by Randi on 26.10.2014.
  */
 public class TripDTO {
 
     double distance;
-    int duration, id;
-    String username, driver, car, date;
+    int id;
+    String username, driver, car, date, duration;
 
 
     public TripDTO() {
 
     }
 
-    public TripDTO(double distance, int duration, String username, String driver, String car, String date) {
+    public TripDTO(double distance, String duration, String username, String driver, String car, String date) {
 
         this.distance = distance;
         this.duration = duration;
@@ -32,12 +39,31 @@ public class TripDTO {
         this.distance = distance;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
     public void setDuration(Long startTime, Long endTime) {
-        this.duration = 0;
+        DateTime startDate = new DateTime(startTime);
+        DateTime endDate = new DateTime(endTime);
+        Period p = new Period(startDate, endDate);
+        long hours, minutes, days;
+        hours = p.getHours();
+        minutes = p.getMinutes();
+        days = p.getDays();
+        if(days > 0)
+        {
+            this.duration = days + " Days, " + hours + " Hours," + minutes + " Minutes.";
+        }
+        else if(hours > 0)
+        {
+            this.duration = hours + " Hours," + minutes + " Minutes.";
+        }
+        else
+        {
+            this.duration = minutes + " Minutes.";
+        }
+
     }
 
     public String getUsername() {
@@ -76,7 +102,11 @@ public class TripDTO {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(Long time) {
+        Date date = new Date(time*1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String result = sdf.format(date);
+        this.date = result;
     }
 }
