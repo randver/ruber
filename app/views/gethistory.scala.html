@@ -1,0 +1,17 @@
+@(trips: List[is.ru.honn.ruber.domain.TripDTO])
+
+<h1>List of trips for user: </h1>
+
+
+<table border="1" style="width:100%">
+
+    @for(trip <- trips) {
+        <tr>
+            <td>@trip.getDuration</td>
+
+
+
+        </tr>
+    }
+</table>
+@* TODO birta partial viewið driverdetails undir hverjum driver *@

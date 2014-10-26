@@ -9,7 +9,7 @@ POST        /signup              controllers.SignupController.signup()
 GET         /login               controllers.LoginController.blank()
 POST        /login               controllers.LoginController.login()
 GET         /getDrivers          controllers.DriverController.getDrivers()
-GET         /getHistory          controllers.UserController.getHistory()
+GET         /getHistory/:user    controllers.UserController.getHistory(user: Integer)
 GET         /getDriverDetails/:driver       controllers.DriverController.getDriverDetails(driver: String)
 
 # Map static resources from the /public folder to the /assets URL path
