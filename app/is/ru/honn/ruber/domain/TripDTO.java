@@ -44,8 +44,8 @@ public class TripDTO {
     }
 
     public void setDuration(Long startTime, Long endTime) {
-        DateTime startDate = new DateTime(startTime);
-        DateTime endDate = new DateTime(endTime);
+        DateTime startDate = new DateTime(startTime*1000);
+        DateTime endDate = new DateTime(endTime*1000);
         Period p = new Period(startDate, endDate);
         long hours, minutes, days;
         hours = p.getHours();

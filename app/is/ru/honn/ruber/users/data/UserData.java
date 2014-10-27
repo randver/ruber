@@ -69,24 +69,30 @@ public class UserData extends RuData implements UserDataGateway
         List<TripDTO> list = new ArrayList<>();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<Map<String, Object>> obj = new ArrayList<>();
-
+        User user;
         try
         {
+            user = (User)jdbcTemplate.queryForObject(
+                    "select * from ru_users where id = '" + uuid + "'", new UserRowMapper());
+
             obj = jdbcTemplate.queryForList(
-                    "select u.username, t.distance, t.start_time, t.end_time \n" +
+                    "select u.username, t.distance, t.start_time, t.end_time, p.display_name \n" +
                             "from ru_trips t \n" +
-                            "inner join ru_users u on u.id = " + uuid + " \n"+
+                            "inner join ru_products p on p.id = t.product_id \n" +
+                            "inner join ru_drivers d on d.id = p.driver_id \n" +
+                            "inner join ru_users u on u.id = d.user_id \n" +
                             "where uuid = '" + uuid + "'");
 
             for (int i = 0; i < obj.size(); i++) {
                 HashMap<String, Object> map = (HashMap) obj.get(i);
                 TripDTO tdto = new TripDTO();
 
-                tdto.setUsername((String) map.get("username"));
+                tdto.setUsername(user.getUsername());
                 tdto.setDistance((Double) map.get("distance"));
-                //tdto.setCar((String) map.get("display_name"));
+                tdto.setCar((String) map.get("display_name"));
                 tdto.setDuration((Long)map.get("start_time"), (Long)map.get("end_time"));
                 tdto.setDate((Long) map.get("start_time"));
+                tdto.setDriver((String)map.get("username"));
                 list.add(tdto);
             }
         }
