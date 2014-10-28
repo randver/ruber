@@ -18,6 +18,10 @@ public class DriverController extends Controller
 {
     protected static ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/DriverService.xml");
 
+    /**
+     * Gets a list of drivers and returns the list to view.
+     * @return
+     */
     public static Result getDrivers()
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
@@ -29,6 +33,11 @@ public class DriverController extends Controller
         return ok(driverlist.render(drivers));
     }
 
+    /**
+     * Gets details for a given driver and returns them to view.
+     * @param username
+     * @return
+     */
     public static Result getDriverDetails(String username)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
@@ -38,6 +47,11 @@ public class DriverController extends Controller
         return ok(driverdetails.render(details));
     }
 
+    /**
+     * Gets comments for a specific driver and returns them to view as a Json Object.
+     * @param driverId
+     * @return
+     */
     public static Result getComments(int driverId)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
@@ -47,6 +61,12 @@ public class DriverController extends Controller
         return ok(toJson(result));
     }
 
+    /**
+     * Should add a comment to table. Not implemented.
+     * @param driverId
+     * @param comment
+     * @return
+     */
     public static Result addComment(int driverId, String comment)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");

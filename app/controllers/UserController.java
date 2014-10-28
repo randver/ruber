@@ -17,6 +17,11 @@ public class UserController extends Controller
 {
   protected static ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/UserService.xml");
 
+    /**
+     * Gets a list containing history of trips for a given user, returns it to the view.
+     * @param uuid
+     * @return
+     */
   public static Result getHistory(int uuid)
   {
       UserService service = (UserService) ctx.getBean("userService");
@@ -26,6 +31,10 @@ public class UserController extends Controller
       return ok(gethistory.render(triplist));
   }
 
+    /**
+     * Gets a list of users and returns to view.
+     * @return
+     */
     public static Result getUsers()
     {
         UserService service = (UserService) ctx.getBean("userService");
