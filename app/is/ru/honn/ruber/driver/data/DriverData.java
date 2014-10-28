@@ -1,12 +1,8 @@
 package is.ru.honn.ruber.driver.data;
 
-import is.ru.honn.ruber.domain.DriverDTO;
 import is.ru.honn.ruber.domain.informationDTO;
 import is.ruframework.data.RuData;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;

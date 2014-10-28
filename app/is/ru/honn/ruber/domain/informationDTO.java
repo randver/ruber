@@ -4,19 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Randi on 25.10.2014.
+ * A class which holds detailed information to display in the view
  */
 public class informationDTO {
 
     List<String> comments;
     int rating;
 
-
-
     int id;
     String firstName, lastName, username, car, email;
-
-
 
     public informationDTO() {
         this.comments = new ArrayList<>();
