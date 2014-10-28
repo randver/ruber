@@ -13,8 +13,12 @@ $('.hide').click(function () {
     $('.storeComments:last').eq(0).toggle();
     $('.storeComments:last').empty();
 });
+function showBox() {
+    $('.submitButton').toggle();
+    $('.textForComment').toggle();
+}
 function getComments(input) {
-    var idToGet = $("#someField").val();
+
     $.ajax ( {
         type : 'GET',
         url : "/getComments/"+ input,
@@ -31,4 +35,18 @@ function getComments(input) {
 
         }
     } );
+}
+
+function addComment(user, text) {
+    $.ajax ({
+        type: 'POST',
+        url: "/addComment/" + user + "/" + text,
+        success: success,
+        dataType: 'json'
+    });
+}
+
+function submitComment() {
+    var text = "Could not be done";
+    console.log(text);
 }
