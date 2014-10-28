@@ -10,10 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Randi on 24.10.2014.
+ * A class which pulls information from the database to pass on
  */
 public class DriverData extends RuData implements DriverDataGateWay {
 
+    /**
+     * A function which pulls from the database the drivers and their cars to pass to the view
+     * Hashmap was used instead of Rowmapper
+     * @return
+     */
     public List<informationDTO> getDriverList()
     {
         List<informationDTO> list = new ArrayList<>();
@@ -38,6 +43,12 @@ public class DriverData extends RuData implements DriverDataGateWay {
         return list;
     }
 
+    /**
+     * A function which takes in a username of a single driver and pulls from database detailed information about
+     * a driver and puts it in a DTO class to pass to view
+     * @param user
+     * @return
+     */
     public List<informationDTO> getDriverDetails(String user)
     {
         List<informationDTO> list = new ArrayList<>();
@@ -78,6 +89,11 @@ public class DriverData extends RuData implements DriverDataGateWay {
         return list;
     }
 
+    /**
+     * A function which pulls from a database all comments for a specific driver
+     * @param driverId
+     * @return
+     */
     public Object getComments(int driverId)
     {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
@@ -87,12 +103,22 @@ public class DriverData extends RuData implements DriverDataGateWay {
                 "where di.driver_id = " + driverId);
     }
 
+    /**
+     * A function which pulls the rating for a specific driver from database
+     * @param driverId
+     * @return
+     */
     public Object getRating(int driverId)
     {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         return jdbcTemplate.queryForList("select di.rating from ru_driverinfo di where di.driver_id = " + driverId);
     }
 
+    /**
+     * A function which receives a takes in a comment for a specific driver and adds to database
+     * @param driverId
+     * @param comment
+     */
     public void addComment(int driverId, String comment)
     {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
