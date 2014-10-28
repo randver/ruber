@@ -51,6 +51,6 @@ public class UserServiceData implements UserService
         return userDataGateway.getHistory(uuid);
     }
 
-
+    public List<User> getUsers() {return userDataGateway.getUsers(); }
 
 }

@@ -3,16 +3,17 @@
 # ~~~~
 
 # Home page
-GET         /                                controllers.Application.index()
-GET         /signup                          controllers.SignupController.blank()
-POST        /signup                          controllers.SignupController.signup()
-GET         /login                           controllers.LoginController.blank()
-POST        /login                           controllers.LoginController.login()
-GET         /getDrivers                      controllers.DriverController.getDrivers()
-GET         /getHistory/:user                controllers.UserController.getHistory(user: Integer)
-GET         /getDriverDetails/:driver        controllers.DriverController.getDriverDetails(driver: String)
-GET         /getComments/:driverId           controllers.DriverController.getComments(driverId: Integer)
-POST        /addComment/:driverId/:comment   controllers.DriverController.addComment(driverId: Integer, comment: String)
+GET         /                                     controllers.Application.index()
+GET         /signup                               controllers.SignupController.blank()
+POST        /signup                               controllers.SignupController.signup()
+GET         /login                                controllers.LoginController.blank()
+POST        /login                                controllers.LoginController.login()
+GET         /getDrivers                           controllers.DriverController.getDrivers()
+GET         /getUsers                             controllers.UserController.getUsers()
+GET         /getHistory/:user                     controllers.UserController.getHistory(user: Integer)
+GET         /getDriverDetails/:driver             controllers.DriverController.getDriverDetails(driver: String)
+GET         /getComments/:driverId                controllers.DriverController.getComments(driverId: Integer)
+POST        /addComment/:driverId/:comment        controllers.DriverController.addComment(driverId: Integer, comment: String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                    controllers.Assets.at(path="/public", file)
+GET         /assets/*file                         controllers.Assets.at(path="/public", file)
