@@ -8,6 +8,6 @@ import is.ruframework.data.RuDataAccess;
  */
 public interface RidesDataGateway extends RuDataAccess{
 
-    public int addTrip(Trip trip, int userId);
+    public int addTrip(Trip trip, int userId) throws TripInsertionException;
 
 }

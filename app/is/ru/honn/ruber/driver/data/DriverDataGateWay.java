@@ -6,7 +6,7 @@ import is.ruframework.data.RuDataAccess;
 import java.util.List;
 
 /**
- * Created by Randi on 24.10.2014.
+ * This interface is implemented by the Class DriverData
  */
 public interface DriverDataGateWay extends RuDataAccess {
     public List<informationDTO> getDriverList();
