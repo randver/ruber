@@ -12,4 +12,5 @@ public interface DriverService {
     public List<informationDTO> getList();
     public List<informationDTO> getDriverDetails(String user);
     public Object getComments(int driverId);
+    public void addComment(int driverId, String comment);
 }
