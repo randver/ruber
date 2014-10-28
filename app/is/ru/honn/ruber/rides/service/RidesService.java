@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface RidesService
 {
-  public void addTrip(int userId, Trip trip);
+  public void addTrip(int userId, Trip trip) throws TripException;
   public List<Trip> getTrip(int userId);
 
 }

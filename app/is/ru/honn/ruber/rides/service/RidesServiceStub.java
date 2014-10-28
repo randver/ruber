@@ -3,7 +3,6 @@ package is.ru.honn.ruber.rides.service;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.rides.data.RidesDataGateway;
-import is.ru.honn.ruber.rides.service.RidesService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +19,7 @@ public class RidesServiceStub implements RidesService
   }
 
   @Override
-  public void addTrip(int userId, Trip trip)
-  {
+  public void addTrip(int userId, Trip trip) throws TripException {
 
         ridesDataGateway.addTrip(trip, userId);
   }

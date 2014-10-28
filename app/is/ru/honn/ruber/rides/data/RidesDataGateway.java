@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.rides.data;
 
 import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.rides.service.TripException;
 import is.ruframework.data.RuDataAccess;
 
 /**
@@ -8,6 +9,6 @@ import is.ruframework.data.RuDataAccess;
  */
 public interface RidesDataGateway extends RuDataAccess{
 
-    public int addTrip(Trip trip, int userId) throws TripInsertionException;
+    public int addTrip(Trip trip, int userId) throws TripException;
 
 }

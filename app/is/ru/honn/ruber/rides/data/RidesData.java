@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.rides.data;
 
 import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.rides.service.TripException;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -19,10 +20,10 @@ public class RidesData extends RuData implements RidesDataGateway {
      * @param trip
      * @param userId
      * @return
-     * @throws TripInsertionException
+     * @throws is.ru.honn.ruber.rides.service.TripException
      */
     @Override
-    public int addTrip(Trip trip, int userId) throws TripInsertionException {
+    public int addTrip(Trip trip, int userId) throws TripException {
         SimpleJdbcInsert insert =
                 new SimpleJdbcInsert(getDataSource())
                         .withTableName("ru_trips")
@@ -46,7 +47,7 @@ public class RidesData extends RuData implements RidesDataGateway {
         }
         catch(DataIntegrityViolationException divex)
         {
-            throw new TripInsertionException("Inserting Trip Failed" , divex);
+            throw new TripException("Inserting Trip Failed" , divex);
         }
 
         trip.setId(returnKey);
