@@ -106,5 +106,18 @@ public class UserData extends RuData implements UserDataGateway
 
     }
 
+    public List<User> getUsers()
+    {
+        List<User> list = new ArrayList<>();
+        List<Map<String, Object>> obj = new ArrayList<>();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        obj = jdbcTemplate.queryForList("select * from ru_users");
+        for (int i = 0; i < obj.size(); i++) {
+            HashMap<String, Object> map = (HashMap) obj.get(i);
+            list.add(getUserByUsername((String) map.get("username")));
+        }
+        return list;
+    }
+
 
 }

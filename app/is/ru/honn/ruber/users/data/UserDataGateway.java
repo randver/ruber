@@ -11,6 +11,7 @@ public interface UserDataGateway extends RuDataAccess
     public int addUser(User user);
     public User getUserByUsername(String username);
     public List<TripDTO> getHistory(int uuid);
+    public List<User> getUsers();
 
 
 }

@@ -1,0 +1,16 @@
+@(users: List[is.ru.honn.ruber.domain.User])
+
+<h1>List of all users</h1>
+
+<table border="1" style="width:100%">
+    <th>Username</th>
+    <th>Email</th>
+    @for(user <- users) {
+        <tr>
+            <td><a href="@routes.UserController.getHistory(user.getId)">@user.getUsername</a></td>
+            <td>@user.getEmail</td>
+
+
+        </tr>
+    }
+</table>

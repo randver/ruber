@@ -10,7 +10,7 @@
 
         <h3>Good to see you again @{session.get("displayName")}!</h3>
         <a href="@routes.DriverController.getDrivers()">Get Driver</a>
-        <a href="@routes.UserController.getHistory(1)">Get Trips for user</a>
+        <a href="@routes.UserController.getUsers">Get list of users</a>
         <a href="@routes.DriverController.getDriverDetails("travis")">Get Driverinfo</a>
 
     } else {
