@@ -25,7 +25,7 @@ public class RidesServiceStub implements RidesService
   }
 
   @Override
-  public List<Trip> getTrip(int userId)
+  public List<Trip> getTrip(int userId) throws TripException
   {
     return theTrips;
   }

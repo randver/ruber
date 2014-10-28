@@ -1,7 +1,7 @@
 package is.ru.honn.ruber.rides.service;
 
 /**
- * Created by Lenovo on 28.10.2014.
+ Exception class for the Ride service
  */
 public class TripException extends Throwable {
 
