@@ -47,10 +47,11 @@ public class DriverController extends Controller
         return ok(toJson(result));
     }
 
-    public static void addComment(int driverId, String comment)
+    public static Result addComment(int driverId, String comment)
     {
         DriverService service = (DriverService) ctx.getBean("driverService");
         service.addComment(driverId, comment);
+        return ok();
     }
 }
 

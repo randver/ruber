@@ -1,6 +1,6 @@
 @(driverdetails: List[is.ru.honn.ruber.domain.informationDTO])
 
-
+    @import play.api.Play.current
 <table border="1" style="width:100%" class="table1">
     <th>Username</th>
     <th>Firstname</th>
@@ -19,6 +19,9 @@
             <span class="storeComments" style="display:none"></span>
             <input type="button" class="btn btn-primary show" value="Show Comments" onClick="getComments(@driverdetail.getId)">
             <input type="button" class="btn btn-primary hide" value="Hide Comments" style="display:none;">
+            <input type="button" class="addButton" value="Add Comment" onClick="showBox()"><br>
+            <textarea class="textForComment" id="textForComment1" style="display:none"></textarea>
+            <input type="button" class="submitButton" value="Submit" style="display:none" onClick="submitComment()">
 
     </tr>
 }

@@ -12,7 +12,7 @@ GET         /getDrivers                      controllers.DriverController.getDri
 GET         /getHistory/:user                controllers.UserController.getHistory(user: Integer)
 GET         /getDriverDetails/:driver        controllers.DriverController.getDriverDetails(driver: String)
 GET         /getComments/:driverId           controllers.DriverController.getComments(driverId: Integer)
-#POST        /addComment/:driverId/:comment   controllers.DriverController.addComment(driverId: Integer, comment: String)
+POST        /addComment/:driverId/:comment   controllers.DriverController.addComment(driverId: Integer, comment: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                    controllers.Assets.at(path="/public", file)
