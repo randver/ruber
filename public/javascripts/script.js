@@ -26,7 +26,7 @@ function getComments(input) {
 
             for(i = 0; i<data.length; i++) {
                 console.log();
-                $('.storeComments:last').append((data[i].comment) + "<br>");
+                $('.storeComments:last').append((data[i].username + " said: " + data[i].comment) + "<br>");
             }
 
         }

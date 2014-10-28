@@ -85,7 +85,10 @@ public class DriverData extends RuData implements DriverDataGateWay {
     public Object getComments(int driverId)
     {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-        return jdbcTemplate.queryForList("select di.comment from ru_driverinfo di where di.driver_id = " + driverId);
+        return jdbcTemplate.queryForList("select di.comment, u.username " +
+                "from ru_driverinfo di " +
+                "inner join ru_users u on u.id = di.user_id " +
+                "where di.driver_id = " + driverId);
     }
 
     public Object getRating(int driverId)
