@@ -2,6 +2,7 @@ package is.ru.honn.ruber.process;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.rides.service.RidesService;
+import is.ru.honn.ruber.rides.service.TripException;
 import is.ruframework.process.RuAbstractProcess;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -54,6 +55,10 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void addTrip(Trip trip)
   {
-    ridesService.addTrip(1, trip);
+      try {
+          ridesService.addTrip(1, trip);
+      } catch (TripException e) {
+          e.printStackTrace();
+      }
   }
 }

@@ -43,11 +43,6 @@ public class UserServiceData implements UserService
     @Override
     public List<TripDTO> getHistory(int uuid) throws UserNotFoundException
     {
-        List<TripDTO> userHistory = userDataGateway.getHistory(uuid);
-        if(userHistory.isEmpty())
-        {
-            throw new UserNotFoundException("No user history linked to user with uuid: " + uuid);
-        }
         return userDataGateway.getHistory(uuid);
     }
 
