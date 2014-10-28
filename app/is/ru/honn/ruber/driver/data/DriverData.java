@@ -47,6 +47,7 @@ public class DriverData extends RuData implements DriverDataGateWay {
         List<informationDTO> list = new ArrayList<>();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         List<Map<String, Object>> obj = new ArrayList<>();
+        int ratingtemp;
         obj = jdbcTemplate.queryForList("select u.id, u.username, u.firstname, u.lastname, u.email, p.display_name \n" +
                 "from ru_users u \n" +
                 "inner join ru_drivers d on u.id = d.user_id \n" +
@@ -56,12 +57,20 @@ public class DriverData extends RuData implements DriverDataGateWay {
         for (int i = 0; i < obj.size(); i++) {
             HashMap<String, Object> map = (HashMap) obj.get(i);
             informationDTO idto = new informationDTO();
-
-            List<Map<String, Object>> comments = (List<Map<String, Object>>) getComments((Integer) map.get("id"));
-            for(int j = 0;j<comments.size(); j++) {
-                HashMap<String, Object> map2 = (HashMap) comments.get(j);
-                idto.addComment((String) map2.get("comment"));
+            ratingtemp = 0;
+            List<Map<String, Object>> ratings = (List<Map<String, Object>>) getRating((Integer) map.get("id"));
+            for(int j = 0;j<ratings.size(); j++) {
+                HashMap<String, Object> map2 = (HashMap) ratings.get(j);
+                ratingtemp += (Integer) map2.get("rating");
             }
+            if(ratings.size() == 0) {
+                idto.setRating(0);
+            }
+            else {
+                ratingtemp = ratingtemp/ratings.size();
+                idto.setRating(ratingtemp);
+            }
+
             idto.setUsername((String) map.get("username"));
             idto.setCar((String) map.get("display_name"));
             idto.setFirstName((String) map.get("firstname"));
@@ -77,6 +86,12 @@ public class DriverData extends RuData implements DriverDataGateWay {
     {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
         return jdbcTemplate.queryForList("select di.comment from ru_driverinfo di where di.driver_id = " + driverId);
+    }
+
+    public Object getRating(int driverId)
+    {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        return jdbcTemplate.queryForList("select di.rating from ru_driverinfo di where di.driver_id = " + driverId);
     }
 
     public void addComment(int driverId, String comment)

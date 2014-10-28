@@ -33,5 +33,6 @@ public class DriverServiceData implements DriverService {
 
     public void addComment(int driverId, String comment) { driverDataGateWay.addComment(driverId, comment);}
 
+    public Object getRating(int driverId) { return driverDataGateWay.getRating(driverId);}
 }
 

@@ -4,14 +4,14 @@
 $(".show").click(function () {
     $('.hide').toggle();
     $(this).toggle();
-    $('.storeComments').eq(0).toggle();
+    $('.storeComments:last').eq(0).toggle();
 });
 
 $('.hide').click(function () {
     $('.show').toggle();
     $(this).toggle();
-    $('.storeComments').eq(0).toggle();
-    $('.storeComments').empty();
+    $('.storeComments:last').eq(0).toggle();
+    $('.storeComments:last').empty();
 });
 function getComments(input) {
     var idToGet = $("#someField").val();

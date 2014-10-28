@@ -14,4 +14,5 @@ public interface DriverDataGateWay extends RuDataAccess {
     public List<informationDTO> getDriverDetails(String user);
     public Object getComments(int driverId);
     public void addComment(int driverId, String comment);
+    public Object getRating(int driverId);
 }
