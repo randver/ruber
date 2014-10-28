@@ -3,9 +3,9 @@
 <h1>List of all drivers</h1>
 
 <table border="1" style="width:100%">
+    <th>Driver</th>
+    <th>Car</th>
     @for(driver <- drivers) {
-        <tr> Name </tr>
-        <tr> Car </tr>
         <tr>
             <td><a href="@routes.DriverController.getDriverDetails(driver.getUsername)">@driver.getUsername</a></td>
             <td>@driver.getCar</td>

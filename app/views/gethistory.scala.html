@@ -3,15 +3,25 @@
 <h1>List of trips for user: </h1>
 
 
-<table border="1" style="width:100%">
-
+<table border="1" style="width:50%">
+    <tr>
+    <th>Duration</th>
+    <th>Rider</th>
+    <th>Driver</th>
+    <th>Car</th>
+    <th>Date</th>
+    <th>Distance</th>
+    </tr>
     @for(trip <- trips) {
         <tr>
             <td>@trip.getDuration</td>
-
-
-
+            <td>@trip.getUsername</td>
+            <td>@trip.getDriver</td>
+            <td>@trip.getCar</td>
+            <td>@trip.getDate</td>
+            <td>@trip.getDistance</td>
         </tr>
+
     }
 </table>
 @* TODO birta partial viewið driverdetails undir hverjum driver *@
