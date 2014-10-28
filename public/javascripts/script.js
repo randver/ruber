@@ -11,6 +11,7 @@ $('.hide').click(function () {
     $('.show').toggle();
     $(this).toggle();
     $('.storeComments').eq(0).toggle();
+    $('.storeComments').empty();
 });
 function getComments(input) {
     var idToGet = $("#someField").val();
