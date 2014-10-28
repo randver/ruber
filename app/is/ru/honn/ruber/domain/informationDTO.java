@@ -10,21 +10,19 @@ public class informationDTO {
 
     List<String> comments;
     int rating;
+
+
+
+    int id;
     String firstName, lastName, username, car, email;
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public informationDTO() {
         this.comments = new ArrayList<>();
     }
 
-    public informationDTO(List<String> comments, int rating, String firstName, String lastName, String username, String car, String email) {
+    public informationDTO(List<String> comments, int rating, String firstName, String lastName, String username, String car, String email, int id) {
 
         this.comments = comments;
         this.rating = rating;
@@ -33,6 +31,7 @@ public class informationDTO {
         this.username = username;
         this.car = car;
         this.email = email;
+        this.id = id;
     }
 
     public List<String> getComments() {
@@ -84,5 +83,17 @@ public class informationDTO {
 
     public void setCar(String car) {
         this.car = car;
+    }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

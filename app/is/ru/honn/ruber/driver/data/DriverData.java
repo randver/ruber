@@ -67,6 +67,7 @@ public class DriverData extends RuData implements DriverDataGateWay {
             idto.setFirstName((String) map.get("firstname"));
             idto.setLastName((String) map.get("lastname"));
             idto.setEmail((String) map.get("email"));
+            idto.setId((Integer) map.get("id"));
             list.add(idto);
         }
         return list;

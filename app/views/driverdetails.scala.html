@@ -1,7 +1,7 @@
 @(driverdetails: List[is.ru.honn.ruber.domain.informationDTO])
 
 
-<table border="1" style="width:100%">
+<table border="1" style="width:100%" class="table1">
     <th>Username</th>
     <th>Firstname</th>
     <th>Lastname</th>
@@ -10,13 +10,24 @@
 
 
 @for(driverdetail <- driverdetails) {
-    <tr>
+    <tr class="trow">
         <td>@driverdetail.getUsername</td>
         <td>@driverdetail.getFirstName</td>
         <td>@driverdetail.getLastName</td>
         <td>@driverdetail.getRating</td>
-        <td>@driverdetail.getComments</td>
+        <td class="comments">
+            <span class="storeComments" style="display:none"></span>
+            <input type="button" class="btn btn-primary show" value="Show Comments" onClick="getComments(@driverdetail.getId)">
+            <input type="button" class="btn btn-primary hide" value="Hide Comments" style="display:none;">
+
     </tr>
 }
 
 </table>
+@moreScripts = { <script src="@routes.Assets.at("javascripts/script.js")"></script>}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+
+@moreScripts
