@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * Created by Randi on 26.10.2014.
+ * A class whici holds detailed information about a trip
  */
 public class TripDTO {
 

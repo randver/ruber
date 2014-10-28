@@ -68,6 +68,10 @@ INSERT INTO ru_drivers (user_id, product_id) VALUES (2, 3)
 INSERT INTO ru_drivers (user_id, product_id) VALUES (3, 4)
 INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (1, 'Solid Ride', 5, 1)
 INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (1, 'Had better', 2, 2)
+INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (2, 'You rule', 5, 1)
+INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (2, 'Splendid ride, I am very happy', 5, 2)
+INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (4, 'Average ride', 1, 3)
+INSERT INTO ru_driverinfo (driver_id, comment, rating, user_id) VALUES (3, 'Awful ride, your car smells ! ', 2, 4)
 DELETE FROM ru_users WHERE username='travis'
 
 select ru_drivers.car, ru_driverinfo.comment 

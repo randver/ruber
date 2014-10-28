@@ -14,5 +14,5 @@ public interface UserService
 
   public User getUser(String username) throws UserNotFoundException;
 
-  public List<TripDTO> getHistory(int uuid);
+  public List<TripDTO> getHistory(int uuid) throws UserNotFoundException;
 }

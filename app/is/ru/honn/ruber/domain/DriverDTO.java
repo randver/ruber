@@ -1,7 +1,7 @@
 package is.ru.honn.ruber.domain;
 
 /**
- * Created by Randi on 24.10.2014.
+ * A class which holds the username and a car for each driver to display in the view
  */
 public class DriverDTO {
 

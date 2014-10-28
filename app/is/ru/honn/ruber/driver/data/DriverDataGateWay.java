@@ -1,6 +1,5 @@
 package is.ru.honn.ruber.driver.data;
 
-import is.ru.honn.ruber.domain.DriverDTO;
 import is.ru.honn.ruber.domain.informationDTO;
 import is.ruframework.data.RuDataAccess;
 
