@@ -1,23 +1,28 @@
 package is.ru.honn.ruber.rides.data;
 
 import is.ru.honn.ruber.domain.Trip;
-import is.ru.honn.ruber.users.service.UsernameExistsException;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Randi on 23.10.2014.
+ * A class which puts trips into a database which are read from an url with TripReader
  */
 public class RidesData extends RuData implements RidesDataGateway {
 
+    /**
+     * Takes in a Trip for a certain user and adds the information to the database
+     * Returns a key which is the auto incremented id so it can be added to the trip
+     * @param trip
+     * @param userId
+     * @return
+     * @throws TripInsertionException
+     */
     @Override
-    public int addTrip(Trip trip, int userId)
-    {
+    public int addTrip(Trip trip, int userId) throws TripInsertionException {
         SimpleJdbcInsert insert =
                 new SimpleJdbcInsert(getDataSource())
                         .withTableName("ru_trips")
@@ -41,7 +46,7 @@ public class RidesData extends RuData implements RidesDataGateway {
         }
         catch(DataIntegrityViolationException divex)
         {
-            throw new UsernameExistsException("Inserting Trip Failed" , divex);
+            throw new TripInsertionException("Inserting Trip Failed" , divex);
         }
 
         trip.setId(returnKey);
